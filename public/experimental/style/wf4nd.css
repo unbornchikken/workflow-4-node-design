@@ -88,7 +88,7 @@ html, body
 
 .wf4nd-a-cnt
 {
-    padding-left: 11px;
+    padding-left: 13px;
 }
 
 .wf4nd-icon
@@ -125,14 +125,14 @@ html, body
     display: inline-block;
     min-width: 6px;
     padding: 1px;
-    border: 1px solid rgba(0, 186, 209, 0.10);
+    border: 1px solid rgba(185, 205, 206, 0.52);
     color: blue;
     height: 14px;
     margin-bottom: 2px;
     vertical-align: middle;
 }
 
-.closed .wf4nd-display-name
+.closed .wf4nd-edit
 {
     color: lightslategray;
     border: 1px solid transparent;
@@ -141,6 +141,7 @@ html, body
 .wf4nd-edit:hover
 {
     background-color: rgba(0, 186, 209, 0.10);
+    border: 1px solid rgba(134, 149, 150, 0.52);
 }
 
 .closed .wf4nd-display-name:hover
@@ -176,7 +177,7 @@ html, body
 
 .wf4nd-variables
 {
-    margin: 4px 0;
+    margin: 8px 0;
 }
 
 .wf4nd-variables ul, .wf4nd-variables li
@@ -186,14 +187,55 @@ html, body
     list-style: none;
 }
 
-.wf4nd-var-name, .wf4nd-var-value
-{
-    min-width: 60px;
-}
-
 .wf4nd-var-value
 {
     color: black;
+}
+
+.wf4nd-create-var
+{
+    background-image: url("images/add.png");
+    background-repeat: no-repeat;
+    background-position-y: center;
+    height: 16px;
+    padding-left: 18px;
+    font-size: 10px;
+    vertical-align: baseline;
+    line-height: 18px;
+    color: lightgray;
+    cursor: pointer;
+    margin-left: -3px;
+    margin-top: 2px;
+}
+
+.wf4nd-create-var:hover
+{
+    background-image: url("images/add-light.png");
+    color: gray;
+}
+
+.wf4nd-var-btns
+{
+    display: inline-block;
+    line-height: 20px;
+    margin-left: -4px;
+}
+
+.wf4nd-var-remove-btn
+{
+    background-image: url("images/remove.png");
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
+    line-height: 20px;
+    display: inline-block;
+    opacity: 0.75;
+    cursor: pointer;
+}
+
+.wf4nd-var-remove-btn:hover
+{
+    opacity: 1;
 }
 
 .wf4nd-body

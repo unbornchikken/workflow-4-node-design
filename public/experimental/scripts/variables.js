@@ -14,3 +14,8 @@ function Variables(presenter)
     this.items = ko.observableArray();
     this.items.push(new Variable(this));
 }
+
+Variables.prototype.createVariable = function()
+{
+    this.items.push(new Variable(this));
+}

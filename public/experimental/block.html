@@ -17,9 +17,15 @@
     <div class="wf4nd-variables">
         <h2>// Variables:</h2>
         <ul data-bind="foreach: items">
-            <div class="wf4nd-edit wf4nd-var-name single-line" contenteditable="true" data-bind="text: name"></div>:&nbsp;
-            <div class="wf4nd-edit wf4nd-var-value single-line" contenteditable="true" data-bind="text: expression"></div>
+            <li>
+                <div class="wf4nd-edit wf4nd-var-name single-line" contenteditable="true" data-bind="text: name"></div>:
+                <div class="wf4nd-edit wf4nd-var-value single-line" contenteditable="true" data-bind="text: expression"></div>
+                <div class="wf4nd-var-btns">
+                    <div class="wf4nd-var-remove-btn"></div>
+                </div>
+            </li>
         </ul>
+        <div class="wf4nd-create-var" data-bind="click: createVariable">Create variable</div>
     </div>
 </script>
 
