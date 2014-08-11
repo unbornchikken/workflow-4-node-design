@@ -1,0 +1,202 @@
+html, body
+{
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.wf4nd
+{
+    min-height: 100%;
+    position: relative;
+    overflow-y: auto;
+}
+
+.wf4nd [contenteditable=true].single-line
+{
+    white-space: nowrap;
+}
+
+.wf4nd .single-line br
+{
+    display: none;
+}
+
+.wf4nd .single-line *
+{
+    display: inline;
+}
+
+.wf4nd-activity
+{
+    font-family: Consolas, "Lucida Console", "Courier New";
+    font-size: 12px;
+    margin: 2px;
+    position: relative;
+}
+
+.wf4nd-activity h2
+{
+    font-size: 12px;
+    color: green;
+    padding: 0;
+    margin: 0;
+    font-weight: normal;
+}
+
+.wf4nd-a-exp
+{
+    position: absolute;
+    width: 9px;
+    height: 100%;
+}
+
+.wf4nd-a-exp-btn
+{
+    position: absolute;
+    top: 4px;
+    width: 9px;
+    height: 9px;
+    background-image: url("images/minus.png");
+    cursor: pointer;
+}
+
+.closed .wf4nd-a-exp-btn
+{
+    background-image: url("images/plus.png");
+}
+
+.wf4nd-a-exp-line
+{
+    position: absolute;
+    top: 13px;
+    left: 4px;
+    width: 1px;
+    bottom: 5px;
+    background-color: lightgray;
+}
+
+.wf4nd-a-exp-lineend
+{
+    position: absolute;
+    height: 1px;
+    left: 4px;
+    width: 4px;
+    bottom: 5px;
+    background-color: lightgray;
+}
+
+.wf4nd-a-cnt
+{
+    padding-left: 11px;
+}
+
+.wf4nd-icon
+{
+    display: inline-block;
+    vertical-align: text-bottom;
+    width: 16px;
+    height: 16px;
+    text-align: center;
+}
+
+.wf4nd-icon img
+{
+    max-width: 16px;
+    max-height: 16px;
+}
+
+.wf4nd-tag
+{
+    display: inline-block;
+    font-weight: bold;
+    margin-right: -3px;
+    margin-left: -3px;
+    color: maroon;
+}
+
+.closed .wf4nd-tag
+{
+    color: lightslategray;
+}
+
+.wf4nd-edit
+{
+    display: inline-block;
+    min-width: 6px;
+    padding: 1px;
+    border: 1px solid rgba(0, 186, 209, 0.10);
+    color: blue;
+    height: 14px;
+    margin-bottom: 2px;
+    vertical-align: middle;
+}
+
+.closed .wf4nd-display-name
+{
+    color: lightslategray;
+    border: 1px solid transparent;
+}
+
+.wf4nd-edit:hover
+{
+    background-color: rgba(0, 186, 209, 0.10);
+}
+
+.closed .wf4nd-display-name:hover
+{
+    background-color: inherit;
+}
+
+.wf4nd-brace
+{
+    display: inline-block;
+    color: black;
+}
+
+.closed .wf4nd-brace
+{
+    color: lightslategray;
+}
+
+.wf4nd-br-open
+{
+    margin-left: -3px;
+}
+
+.wf4nd-br-closed-end
+{
+    display: none;
+}
+
+.closed .wf4nd-br-closed-end
+{
+    display: inline;
+}
+
+.wf4nd-variables
+{
+    margin: 4px 0;
+}
+
+.wf4nd-variables ul, .wf4nd-variables li
+{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.wf4nd-var-name, .wf4nd-var-value
+{
+    min-width: 60px;
+}
+
+.wf4nd-var-value
+{
+    color: black;
+}
+
+.wf4nd-body
+{
+    padding-left: 3em;
+}

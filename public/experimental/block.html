@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Block</title>
+    <link rel="stylesheet" type="text/css" href="style/wf4nd.css"/>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/knockout/3.1.0/knockout-min.js"></script>
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.js"></script>
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/bluebird/1.2.2/bluebird.js"></script>
+
+    <script type="text/javascript" src="scripts/variables.js"></script>
+    <script type="text/javascript" src="scripts/activityPresenter.js"></script>
+</head>
+
+<script type="text/html" id="wf4nd-variables-tmpl">
+    <div class="wf4nd-variables">
+        <h2>// Variables:</h2>
+        <ul data-bind="foreach: items">
+            <div class="wf4nd-edit wf4nd-var-name single-line" contenteditable="true" data-bind="text: name"></div>:&nbsp;
+            <div class="wf4nd-edit wf4nd-var-value single-line" contenteditable="true" data-bind="text: expression"></div>
+        </ul>
+    </div>
+</script>
+
+<script type="text/html" id="wf4nd-activity-tmpl">
+    <div class="wf4nd-activity" data-bind="css: { closed: !isExpanded() }">
+        <div class="wf4nd-a-exp">
+            <div class="wf4nd-a-exp-btn" data-bind="click: expandClick"></div>
+            <div class="wf4nd-a-exp-line" data-bind="visible: isExpanded()"></div>
+            <div class="wf4nd-a-exp-lineend" data-bind="visible: isExpanded()"></div>
+        </div>
+        <div class="wf4nd-a-cnt">
+            <div class="wf4nd-head">
+                <div class="wf4nd-icon">
+                    <img src="style/images/block.png">
+                </div>
+                <div class="wf4nd-tag">block</div>
+                <div class="wf4nd-edit single-line" data-bind="{text: displayName, attr: { contenteditable: isExpanded() }}">
+                </div>
+                <div class="wf4nd-brace wf4nd-br-open">{<span class="wf4nd-br-closed-end">&nbsp;...&nbsp;}</span></div>
+            </div>
+            <div class="wf4nd-body" data-bind="visible: isExpanded()">
+                <div data-bind="template: { name: 'wf4nd-variables-tmpl', data: variables }">
+                </div>
+            </div>
+            <div class="wf4nd-closing" data-bind="visible: isExpanded()">
+                <div class="wf4nd-brace wf4nd-br-close">}</div>
+            </div>
+        </div>
+    </div>
+</script>
+
+<script type="text/javascript">
+    $(function()
+    {
+        var ap = new ActivityPresenter();
+        ko.applyBindings(ap, $(".wf4nd-code").get()[0]);
+    });
+</script>
+
+<body>
+    <div class="wf4nd">
+        <div class="wf4nd-code" data-bind="template: { name: 'wf4nd-activity-tmpl' }">
+        </div>
+    </div>
+</body>
+</html>
