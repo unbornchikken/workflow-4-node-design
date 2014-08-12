@@ -196,7 +196,7 @@ html, body
 {
     background-image: url("images/add.png");
     background-repeat: no-repeat;
-    background-position-y: center;
+    background-position: left center;
     height: 16px;
     padding-left: 18px;
     font-size: 10px;
@@ -247,6 +247,62 @@ html, body
 .wf4nd-var-btns .wf4nd-btn:hover
 {
     opacity: 1;
+}
+
+ul.wf4nd-categories, ul.wf4nd-categories > li > ul
+{
+    width: 160px;
+    background-color: #dfe5ef;
+    display: none;
+    position: absolute;
+    z-index: 100;
+    top: 16px;
+    left: 0px;
+    border: 1px solid #adc7d6;
+}
+
+ul.wf4nd-categories > li
+{
+    position: relative;
+    padding-left: 10px;
+}
+
+ul.wf4nd-categories li
+{
+    padding: 2px;
+}
+
+ul.wf4nd-categories li:hover
+{
+    background-color: #bfdaf5;
+}
+
+ul.wf4nd-categories > li:hover > ul
+{
+    display: block;
+}
+
+ul.wf4nd-categories > li > ul
+{
+    left: 100%;
+    top: -1px;
+}
+
+.wf4nd-categories .wf4nd-icon
+{
+    background-repeat: no-repeat;
+    background-position: left center;
+    padding-left: 20px;
+}
+
+.wf4nd-btn:hover .wf4nd-categories
+{
+    display: block;
+}
+
+.wf4nd-submenu
+{
+    background: url("images/submenu.png") no-repeat right center;
 }
 
 .wf4nd-body

@@ -22,15 +22,16 @@
                 <div class="wf4nd-edit wf4nd-var-name single-line" contenteditable="true" data-bind="text: name"></div>:
                 <div class="wf4nd-edit wf4nd-var-value single-line" contenteditable="true" data-bind="text: expression"></div>
                 <div class="wf4nd-var-btns">
-                    <div class="wf4nd-btn wf4nd-activities" title="Activity ...">
+                    <div class="wf4nd-btn wf4nd-activities">
                         <ul class="wf4nd-categories" data-bind="foreach: $root.categories">
-                            <li><span data-bind="text: name"></span></li>
+                            <li data-bind="css: { 'wf4nd-submenu': items.length !== 0 }"><span data-bind="text: name"></span>
                             <ul class="wf4nd-items" data-bind="foreach: items">
-                                <li><span data-bind="text: name, style: { backgroundImage: 'url(\'' + $data.icon + '\')' }"></span></li>
+                                <li><span class="wf4nd-icon" data-bind="text: name, style: { backgroundImage: 'url(\'' + $data.icon + '\')' }"></span></li>
                             </ul>
+                            </li>
                         </ul>
                     </div>
-                    <div class="wf4nd-btn wf4nd-remove" title="Remove" data-bind="click: remove, visible: $parent.items().length > 1"></div>
+                    <div class="wf4nd-btn wf4nd-remove" data-bind="click: remove, visible: $parent.items().length > 1"></div>
                 </div>
             </li>
         </ul>

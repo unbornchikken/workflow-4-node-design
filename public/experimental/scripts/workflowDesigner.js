@@ -11,6 +11,14 @@ function WorkflowDesigner()
                     canDeclare: true,
                     properties: null,
                     wantArgs: true
+                },
+                {
+                    name: "Parallel",
+                    icon: "style/images/block.png",
+                    tagName: "parallel",
+                    canDeclare: true,
+                    properties: null,
+                    wantArgs: true
                 }
             ]
         }
