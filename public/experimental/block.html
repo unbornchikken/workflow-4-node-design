@@ -11,6 +11,7 @@
 
     <script type="text/javascript" src="scripts/variables.js"></script>
     <script type="text/javascript" src="scripts/activityPresenter.js"></script>
+    <script type="text/javascript" src="scripts/workflowDesigner.js"></script>
 </head>
 
 <script type="text/html" id="wf4nd-variables-tmpl">
@@ -21,7 +22,15 @@
                 <div class="wf4nd-edit wf4nd-var-name single-line" contenteditable="true" data-bind="text: name"></div>:
                 <div class="wf4nd-edit wf4nd-var-value single-line" contenteditable="true" data-bind="text: expression"></div>
                 <div class="wf4nd-var-btns">
-                    <div class="wf4nd-var-remove-btn"></div>
+                    <div class="wf4nd-btn wf4nd-activities" title="Activity ...">
+                        <ul class="wf4nd-categories" data-bind="foreach: $root.categories">
+                            <li><span data-bind="text: name"></span></li>
+                            <ul class="wf4nd-items" data-bind="foreach: items">
+                                <li><span data-bind="text: name, style: { backgroundImage: 'url(\'' + $data.icon + '\')' }"></span></li>
+                            </ul>
+                        </ul>
+                    </div>
+                    <div class="wf4nd-btn wf4nd-remove" title="Remove" data-bind="click: remove, visible: $parent.items().length > 1"></div>
                 </div>
             </li>
         </ul>
@@ -41,7 +50,7 @@
                 <div class="wf4nd-icon">
                     <img src="style/images/block.png">
                 </div>
-                <div class="wf4nd-tag">block</div>
+                <div class="wf4nd-tag" data-bind="text: tagName"></div>
                 <div class="wf4nd-edit single-line" data-bind="{text: displayName, attr: { contenteditable: isExpanded() }}">
                 </div>
                 <div class="wf4nd-brace wf4nd-br-open">{<span class="wf4nd-br-closed-end">&nbsp;...&nbsp;}</span></div>
@@ -60,14 +69,14 @@
 <script type="text/javascript">
     $(function()
     {
-        var ap = new ActivityPresenter();
-        ko.applyBindings(ap, $(".wf4nd-code").get()[0]);
+        var designer = new WorkflowDesigner();
+        ko.applyBindings(designer, $(".wf4nd").get()[0]);
     });
 </script>
 
 <body>
     <div class="wf4nd">
-        <div class="wf4nd-code" data-bind="template: { name: 'wf4nd-activity-tmpl' }">
+        <div class="wf4nd-code" data-bind="template: { name: 'wf4nd-activity-tmpl', data: rootActivity }">
         </div>
     </div>
 </body>

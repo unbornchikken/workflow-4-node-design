@@ -7,6 +7,11 @@ function Variable(variables)
     this.activity = ko.observable(null);
 }
 
+Variable.prototype.remove = function()
+{
+    this.variables.removeVariable(this);
+}
+
 function Variables(presenter)
 {
     this.presener = presenter;
@@ -18,4 +23,9 @@ function Variables(presenter)
 Variables.prototype.createVariable = function()
 {
     this.items.push(new Variable(this));
+}
+
+Variables.prototype.removeVariable = function(variable)
+{
+    this.items.remove(variable);
 }
