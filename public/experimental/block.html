@@ -82,7 +82,8 @@
 </script>
 
 <script type="text/html" id="wf-activity-tmpl">
-    <div class="wf-expandable wf-expandable-activity" data-bind="css: { 'wf-closed': !isExpanded() }">
+    <div class="wf-expandable wf-expandable-activity"
+         data-bind="css: { 'wf-closed': !isExpanded() }">
         <div class="wf-exp-control">
             <div class="wf-exp-btn" data-bind="click: toggleExpand"></div>
             <div class="wf-exp-line" data-bind="visible: isExpanded()"></div>
@@ -108,6 +109,7 @@
                     </div>
                     <div data-bind="template: { name: 'wf-value-list-tmpl', data: args, if: args() !== null }">
                     </div>
+                    <div data-bind="visible: !isRoot()">@to: <div class="wf-edit wf-var-name single-line" contenteditable="true"></div></div>
                 </div>
                 <div class="wf-activity-closing">
                     <div class="wf-brace wf-br-close">}</div>

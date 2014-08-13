@@ -4,7 +4,8 @@ function ActivityPresenter(definition, removeCallback)
 
     this.displayName = ko.observable("");
     this.tagName = ko.observable(definition.tagName);
-    this.icon = ko.observable(definition.icon);
+    this.icon = ko.observable(definition.icon || "");
+    this.hasResult = ko.observable(definition.hasResult ? true : false);
     this._removeCallback = removeCallback;
 
     this.variables = ko.observable(definition.canDeclare ? new VariableList() : null);
@@ -21,4 +22,9 @@ ActivityPresenter.prototype.canRemove = function()
 ActivityPresenter.prototype.remove = function()
 {
     if (this._removeCallback) this._removeCallback(this);
+}
+
+ActivityPresenter.prototype.isRoot = function()
+{
+    return !this.canRemove();
 }

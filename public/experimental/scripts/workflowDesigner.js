@@ -10,7 +10,8 @@ function WorkflowDesigner()
                     tagName: "block",
                     canDeclare: true,
                     properties: null,
-                    wantArgs: true
+                    wantArgs: true,
+                    hasResult: true
                 },
                 {
                     name: "Parallel",
@@ -18,7 +19,8 @@ function WorkflowDesigner()
                     tagName: "parallel",
                     canDeclare: true,
                     properties: null,
-                    wantArgs: true
+                    wantArgs: true,
+                    hasResult: true
                 }
             ]
         }
