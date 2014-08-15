@@ -10,6 +10,7 @@ function ActivityPresenter(definition, removeCallback)
 
     this.variables = ko.observable(definition.canDeclare ? new VariableList() : null);
     this.args = ko.observable(definition.wantArgs ? new ValueList({ title: "Args", createNewText: "Create arg", expanded: true }) : null);
+    this.properties = ko.observable(definition.properties ? new PropertyCategoryList(definition.properties) : null);
 }
 
 util.inherits(ActivityPresenter, Expandable);

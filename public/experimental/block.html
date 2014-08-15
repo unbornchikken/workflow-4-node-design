@@ -5,10 +5,14 @@
     <meta charset="UTF-8">
     <title>Block</title>
     <link rel="stylesheet" type="text/css" href="style/wf4nd.css"/>
+    <link href="http://cdn.kendostatic.com/2014.2.716/styles/kendo.common.min.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="http://cdn.kendostatic.com/2014.2.716/styles/kendo.blueopal.min.css"/>
     <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/knockout/3.1.0/knockout-min.js"></script>
     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.js"></script>
     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/bluebird/1.2.2/bluebird.js"></script>
+    <script type="text/javascript" src="http://cdn.kendostatic.com/2014.2.716/js/kendo.web.min.js"></script>
+    <script type="text/javascript" src="scripts/knockout-kendo.min.js"></script>
 
     <script type="text/javascript" src="scripts/util.js"></script>
     <script type="text/javascript" src="scripts/expandable.js"></script>
@@ -16,6 +20,9 @@
     <script type="text/javascript" src="scripts/valueList.js"></script>
     <script type="text/javascript" src="scripts/variable.js"></script>
     <script type="text/javascript" src="scripts/variableList.js"></script>
+    <script type="text/javascript" src="scripts/property.js"></script>
+    <script type="text/javascript" src="scripts/propertyList.js"></script>
+    <script type="text/javascript" src="scripts/propertyCategoryList.js"></script>
     <script type="text/javascript" src="scripts/activityPresenter.js"></script>
     <script type="text/javascript" src="scripts/workflowDesigner.js"></script>
 
@@ -81,6 +88,24 @@
     </div>
 </script>
 
+<script type="text/html" id="wf-propg-list-tmpl">
+    <div class="wf-expandable" data-bind="css: { 'wf-closed': !isExpanded() }">
+        <div class="wf-exp-control">
+            <div class="wf-exp-btn" data-bind="click: toggleExpand"></div>
+            <div class="wf-exp-line" data-bind="visible: isExpanded()"></div>
+            <div class="wf-exp-lineend" data-bind="visible: isExpanded()"></div>
+        </div>
+        <div class="wf-exp-cnt">
+            <div class="wf-propg-list">
+                <h2>// <span data-bind="text: title"></span></h2>
+                <div class="wf-value-list-body">
+                    Hi!
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+
 <script type="text/html" id="wf-activity-tmpl">
     <div class="wf-expandable wf-expandable-activity"
          data-bind="css: { 'wf-closed': !isExpanded() }">
@@ -106,6 +131,8 @@
                 </div>
                 <div class="wf-activity-body">
                     <div data-bind="template: { name: 'wf-value-list-tmpl', data: variables, if: variables() !== null }">
+                    </div>
+                    <div data-bind="template: { name: 'wf-propg-list-tmpl', data: properties, if: properties() !== null }">
                     </div>
                     <div data-bind="template: { name: 'wf-value-list-tmpl', data: args, if: args() !== null }">
                     </div>

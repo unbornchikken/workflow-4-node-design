@@ -9,9 +9,83 @@ function WorkflowDesigner()
                     icon: "style/images/block.png",
                     tagName: "block",
                     canDeclare: true,
-                    properties: null,
                     wantArgs: true,
-                    hasResult: true
+                    hasResult: true,
+                    properties: [
+                        {
+                            category: "Category1",
+                            name: "anyProp",
+                            type: "any" // if this is not present, then default is 'any'
+                        },
+                        {
+                            category: "Category1",
+                            name: "stringProp",
+                            type: "string"
+                        },
+                        {
+                            category: "Category1",
+                            name: "numberProp",
+                            type: "number"
+                        },
+                        {
+                            category: "Category2",
+                            name: "booleanProp",
+                            type: "boolean"
+                        },
+                        {
+                            category: "Category2",
+                            name: "datetimeProp",
+                            type: "datetime"
+                        },
+                        {
+                            category: "Category2",
+                            name: "dateProp",
+                            type: "date"
+                        },
+                        {
+                            category: "Category2",
+                            name: "timeProp",
+                            type: "time"
+                        },
+                        {
+                            category: "Category3",
+                            name: "enumProp",
+                            type: "enum",
+                            values: [
+                                {
+                                    value: 1,
+                                    name: "One"
+                                },
+                                {
+                                    value: 2,
+                                    name: "Two"
+                                },
+                                {
+                                    value: 3,
+                                    name: "Three"
+                                }
+                            ]
+                        },
+                        {
+                            category: "Category3",
+                            name: "setProp",
+                            type: "set",
+                            values: [
+                                {
+                                    value: "apple",
+                                    name: "Apple"
+                                },
+                                {
+                                    value: "pear",
+                                    name: "Pear"
+                                },
+                                {
+                                    value: "peach",
+                                    name: "Peach"
+                                }
+                            ]
+                        }
+                    ]
                 },
                 {
                     name: "Parallel",
