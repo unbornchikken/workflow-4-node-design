@@ -2,12 +2,15 @@ function Value(parent)
 {
     this.parent = parent;
 
+    this.typeID = "value";
+
     this._mouseOverCategoryMenu = false;
     this._hideId = null;
 
     this.expression = ko.observable("");
     this.activity = ko.observable(null);
     this.categoryMenuVisible = ko.observable(false);
+    this.type = ko.observable("expression");
 }
 
 Value.prototype.remove = function()

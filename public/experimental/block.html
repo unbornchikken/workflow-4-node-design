@@ -31,17 +31,30 @@
 <script type="text/html" id="wf-value-tmpl">
     <div class="wf-value">
         <div class="wf-exp-row"></div>
-        <span data-bind="visible: $rawData.name !== undefined">
+        <span data-bind="visible: typeID === 'variable'">
             <div class="wf-edit wf-var-name single-line" contenteditable="true"
                  data-bind="text: name"></div>:
         </span>
-        <span data-bind="visible: $rawData.name === undefined">
+        <span data-bind="visible: typeID === 'property'">
+            <div class="wf-value-type-btn wf-expression"
+                 title="Expression"
+                 data-bind="visible: type() === 'expression' && activity() === null"></div>
+            <div class="wf-value-type-btn wf-string"
+                 title="String"
+                 data-bind="visible: type() === 'string' && activity() === null"></div>
+            <div class="wf-value-type-btn wf-number"
+                 title="Number"
+                 data-bind="visible: type() === 'number' && activity() === null"></div>
+            <div class="wf-var-name"
+                 data-bind="text: name"></div>:
+        </span>
+        <span data-bind="visible: typeID === 'value'">
             <div class="wf-var-name">
                 <span data-bind="text: $index"></span>:
             </div>
         </span>
-        <div class="wf-edit wf-var-value single-line" contenteditable="true"
-             data-bind="text: expression, visible: activity() === null"></div>
+        <span data-bind="visible: type() === 'string' && activity() === null">"</span><div class="wf-edit wf-var-value single-line" contenteditable="true"
+             data-bind="text: expression, visible: activity() === null"></div><span data-bind="visible: type() === 'string' && activity() === null">"</span>
         <div class="wf-btns">
             <div class="wf-btn wf-activities"
                  data-bind="click: function() { $parent.showCategories.call($parent, $data) }, event: { mouseover: onMouseOverCategoryMenu, mouseout: onMouseOutCategoryMenu }, css: { 'wf-op1': categoryMenuVisible() }">
@@ -81,7 +94,8 @@
                     <ul data-bind="foreach: items">
                         <li data-bind="template: { name: 'wf-value-tmpl' }"></li>
                     </ul>
-                    <div class="wf-create-value" data-bind="click: createNew, text: createNewText"></div>
+                    <div class="wf-create-value"
+                         data-bind="click: createNew, text: createNewText, visible: createNew"></div>
                 </div>
             </div>
         </div>
@@ -99,7 +113,9 @@
             <div class="wf-propg-list">
                 <h2>// <span data-bind="text: title"></span></h2>
                 <div class="wf-value-list-body">
-                    Hi!
+                    <ul data-bind="foreach: items">
+                        <li data-bind="template: { name: 'wf-value-list-tmpl' }"></li>
+                    </ul>
                 </div>
             </div>
         </div>

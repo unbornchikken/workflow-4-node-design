@@ -15,7 +15,7 @@ function WorkflowDesigner()
                         {
                             category: "Category1",
                             name: "anyProp",
-                            type: "any" // if this is not present, then default is 'any'
+                            type: "expression" // if this is not present, then default is 'any'
                         },
                         {
                             category: "Category1",

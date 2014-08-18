@@ -2,7 +2,8 @@ function PropertyList(categoryName, propertyDefinitions)
 {
     ValueList.call(this, {
         title: categoryName,
-        createNewText: "N/A"
+        createNewText: "N/A",
+        expanded: true
     });
 
     var self = this;
@@ -15,7 +16,4 @@ function PropertyList(categoryName, propertyDefinitions)
 
 util.inherits(PropertyList, ValueList);
 
-PropertyList.prototype.createNew = function()
-{
-    // Do nothing ...
-}
+PropertyList.prototype.createNew = null;

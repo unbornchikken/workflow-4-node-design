@@ -2,7 +2,7 @@ function ValueList(options)
 {
     Expandable.call(this, options.expanded);
     this.items = ko.observableArray();
-    this.createNew();
+    if (this.createNew) this.createNew();
     this.title = options.title || "";
     this.createNewText = options.createNewText || "";
 }
