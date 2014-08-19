@@ -7,10 +7,15 @@ function Value(parent)
     this._mouseOverCategoryMenu = false;
     this._hideId = null;
 
-    this.expression = ko.observable("");
+    this.expression = ko.observable(null);
     this.activity = ko.observable(null);
     this.categoryMenuVisible = ko.observable(false);
     this.type = ko.observable("expression");
+
+    this.expression.subscribe(function(newValue)
+    {
+        console.log(newValue);
+    });
 }
 
 Value.prototype.remove = function()

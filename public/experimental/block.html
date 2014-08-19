@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <title>Block</title>
     <link rel="stylesheet" type="text/css" href="style/wf4nd.css"/>
-    <link href="http://cdn.kendostatic.com/2014.2.716/styles/kendo.common.min.css" rel="stylesheet" />
-    <link rel="stylesheet" type="text/css" href="http://cdn.kendostatic.com/2014.2.716/styles/kendo.blueopal.min.css"/>
+    <link href="http://cdn.kendostatic.com/2014.2.716/styles/kendo.common.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="http://cdn.kendostatic.com/2014.2.716/styles/kendo.bootstrap.min.css"/>
     <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/knockout/3.1.0/knockout-min.js"></script>
     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.js"></script>
@@ -35,26 +35,48 @@
             <div class="wf-edit wf-var-name single-line" contenteditable="true"
                  data-bind="text: name"></div>:
         </span>
-        <span data-bind="visible: typeID === 'property'">
-            <div class="wf-value-type-btn wf-expression"
-                 title="Expression"
-                 data-bind="visible: type() === 'expression' && activity() === null"></div>
-            <div class="wf-value-type-btn wf-string"
-                 title="String"
-                 data-bind="visible: type() === 'string' && activity() === null"></div>
-            <div class="wf-value-type-btn wf-number"
-                 title="Number"
-                 data-bind="visible: type() === 'number' && activity() === null"></div>
-            <div class="wf-var-name"
-                 data-bind="text: name"></div>:
-        </span>
+        <div class="wf-var-name"
+             data-bind="text: name, visible: typeID === 'property'"></div><!--
+             -->:
         <span data-bind="visible: typeID === 'value'">
             <div class="wf-var-name">
                 <span data-bind="text: $index"></span>:
             </div>
         </span>
-        <span data-bind="visible: type() === 'string' && activity() === null">"</span><div class="wf-edit wf-var-value single-line" contenteditable="true"
-             data-bind="text: expression, visible: activity() === null"></div><span data-bind="visible: type() === 'string' && activity() === null">"</span>
+        <span data-bind="if: activity() === null">
+            <span data-bind="if: type() === 'expression'">
+                <div class="wf-edit wf-var-value single-line" contenteditable="true"
+                     data-bind="text: expression"></div>
+            </span>
+            <span data-bind="if: type() === 'string'">
+                <span style="text-decoration: line-through">null</span>
+                "<!--
+                --><div class="wf-edit wf-var-value single-line" contenteditable="true"
+                        data-bind="text: expression"></div><!--
+                -->"
+            </span>
+            <span data-bind="if: type() === 'number'">
+                <input data-bind="kendoNumericTextBox: expression" />
+            </span>
+            <span data-bind="if: type() === 'boolean'">
+                <input data-bind="checked: expression" type="checkbox" />
+            </span>
+            <span data-bind="if: type() === 'datetime'">
+                <input data-bind="kendoDateTimePicker: { value: expression }" />
+            </span>
+            <span data-bind="if: type() === 'date'">
+                <input data-bind="kendoDatePicker: { value: expression }" />
+            </span>
+            <span data-bind="if: type() === 'time'">
+                <input data-bind="kendoTimePicker: { value: expression }" />
+            </span>
+            <span data-bind="if: type() === 'enum'">
+                <input data-bind="kendoDropDownList: { value: expression, data: $data.values, dataTextField: 'name', dataValueField: 'value' }" />
+            </span>
+            <span data-bind="if: type() === 'set'">
+                <select class="wf-set-value-select" data-bind="kendoMultiSelect: { value: expression, data: $data.values, dataTextField: 'name', dataValueField: 'value' }" />
+            </span>
+        </span>
         <div class="wf-btns">
             <div class="wf-btn wf-activities"
                  data-bind="click: function() { $parent.showCategories.call($parent, $data) }, event: { mouseover: onMouseOverCategoryMenu, mouseout: onMouseOutCategoryMenu }, css: { 'wf-op1': categoryMenuVisible() }">
@@ -72,10 +94,10 @@
                 </ul>
             </div>
             <div class="wf-btn wf-remove"
-                 data-bind="click: remove, visible: $parent.items().length > 1"></div>
+                 data-bind="click: remove, visible: $parent.items().length > 1 && typeID !== 'property'"></div>
         </div>
-        <div class="wf-war-activity" data-bind="visible: activity() !== null">
-            <div data-bind="template: { name: 'wf-activity-tmpl', data: activity, if: activity() !== null }"></div>
+        <div class="wf-war-activity" data-bind="if: activity() !== null">
+            <div data-bind="template: { name: 'wf-activity-tmpl', data: activity }"></div>
         </div>
     </div>
 </script>
@@ -90,6 +112,7 @@
         <div class="wf-exp-cnt">
             <div class="wf-value-list">
                 <h2>// <span data-bind="text: title"></span></h2>
+
                 <div class="wf-value-list-body">
                     <ul data-bind="foreach: items">
                         <li data-bind="template: { name: 'wf-value-tmpl' }"></li>
@@ -112,6 +135,7 @@
         <div class="wf-exp-cnt">
             <div class="wf-propg-list">
                 <h2>// <span data-bind="text: title"></span></h2>
+
                 <div class="wf-value-list-body">
                     <ul data-bind="foreach: items">
                         <li data-bind="template: { name: 'wf-value-list-tmpl' }"></li>
@@ -152,7 +176,9 @@
                     </div>
                     <div data-bind="template: { name: 'wf-value-list-tmpl', data: args, if: args() !== null }">
                     </div>
-                    <div data-bind="visible: !isRoot()">@to: <div class="wf-edit wf-var-name single-line" contenteditable="true"></div></div>
+                    <div data-bind="visible: !isRoot()">@to:
+                        <div class="wf-edit wf-var-name single-line" contenteditable="true"></div>
+                    </div>
                 </div>
                 <div class="wf-activity-closing">
                     <div class="wf-brace wf-br-close">}</div>
