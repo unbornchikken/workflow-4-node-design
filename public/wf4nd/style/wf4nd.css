@@ -1,0 +1,392 @@
+html, body
+{
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.wf
+{
+    min-height: 100%;
+    position: relative;
+    overflow-y: auto;
+}
+
+.wf-show
+{
+    display: block !important;
+    opacity: 1 !important;
+}
+
+.wf-op1
+{
+    opacity: 1 !important;
+}
+
+.wf [contenteditable=true].single-line
+{
+    white-space: nowrap;
+}
+
+.wf .single-line br
+{
+    display: none;
+}
+
+.wf .single-line *
+{
+    display: inline;
+}
+
+.wf-expandable
+{
+    position: relative;
+    margin: 12px 2px;
+}
+
+.wf-expandable-activity
+{
+    margin: 2px;
+}
+
+.wf-activity h2
+{
+    font-size: 12px;
+    color: green;
+    padding: 0;
+    margin: 0;
+    font-weight: normal;
+}
+
+.wf-activity .wf-closed h2
+{
+    color: lightslategray;
+}
+
+.wf-exp-control
+{
+    position: absolute;
+    width: 9px;
+    height: 100%;
+}
+
+.wf-exp-btn
+{
+    position: absolute;
+    top: 3px;
+    width: 9px;
+    height: 9px;
+    background-image: url("images/minus.png");
+    cursor: pointer;
+}
+
+.wf-closed .wf-exp-btn
+{
+    background-image: url("images/plus.png");
+}
+
+.wf-exp-line
+{
+    position: absolute;
+    top: 12px;
+    left: 4px;
+    width: 1px;
+    bottom: 5px;
+    background-color: lightgray;
+}
+
+.wf-exp-lineend
+{
+    position: absolute;
+    height: 1px;
+    left: 4px;
+    width: 4px;
+    bottom: 5px;
+    background-color: lightgray;
+}
+
+.wf-exp-cnt
+{
+    padding-left: 13px;
+}
+
+.wf-activity
+{
+    font-family: Consolas, "Lucida Console", "Courier New";
+    font-size: 12px;
+}
+
+.wf-icon
+{
+    display: inline-block;
+    vertical-align: text-bottom;
+    width: 16px;
+    height: 16px;
+    text-align: center;
+}
+
+.wf-icon img
+{
+    max-width: 16px;
+    max-height: 16px;
+}
+
+.wf-tag
+{
+    display: inline-block;
+    font-weight: bold;
+    margin-right: -3px;
+    margin-left: -3px;
+    color: maroon;
+}
+
+.wf-closed .wf-tag
+{
+    color: lightslategray;
+}
+
+.wf-edit
+{
+    display: inline-block;
+    min-width: 6px;
+    padding: 1px;
+    border: 1px solid rgba(185, 205, 206, 0.52);
+    color: blue;
+    height: 14px;
+    margin-bottom: 2px;
+    vertical-align: middle;
+}
+
+.wf-closed .wf-edit
+{
+    color: lightslategray;
+    border: 1px solid transparent;
+}
+
+.wf-edit:hover
+{
+    background-color: rgba(0, 186, 209, 0.10);
+    border: 1px solid rgba(134, 149, 150, 0.52);
+}
+
+.wf-closed .wf-display-name:hover
+{
+    background-color: inherit;
+}
+
+.wf-brace
+{
+    display: inline-block;
+    color: black;
+}
+
+.wf-closed .wf-brace
+{
+    color: lightslategray;
+}
+
+.wf-br-open
+{
+    margin-left: -3px;
+}
+
+.wf-br-closed-end
+{
+    display: none;
+}
+
+.wf-closed .wf-br-closed-end
+{
+    display: inline;
+}
+
+.wf-value-list ul, .wf-value-list li
+{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.wf-closed .wf-value-list-body
+{
+    display: none;
+}
+
+.wf-value-list-body > ul > li
+{
+    position: relative;
+}
+
+.wf-value-list .wf-exp-row
+{
+    background-color: lightgray;
+    position: absolute;
+    top: 11px;
+    height: 1px;
+    width: 5px;
+    left: -9px;
+}
+
+.wf-value-list ul > li
+{
+    padding: 1px 0;
+}
+
+.wf-var-name
+{
+    color: navy;
+    font-weight: bold;
+    display: inline-block;
+}
+
+.wf-var-value
+{
+    color: black;
+}
+
+.wf-create-value
+{
+    background-image: url("images/add.png");
+    background-repeat: no-repeat;
+    background-position: left center;
+    height: 16px;
+    padding-left: 18px;
+    font-size: 10px;
+    vertical-align: baseline;
+    line-height: 18px;
+    color: lightgray;
+    cursor: pointer;
+    margin-left: -3px;
+    margin-top: 2px;
+    display: inline-block;
+}
+
+.wf-create-value:hover
+{
+    background-image: url("images/add-light.png");
+    color: gray;
+}
+
+.wf-btns
+{
+    display: inline-block;
+    line-height: 20px;
+}
+
+.wf-btns .wf-btn
+{
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
+    line-height: 20px;
+    display: inline-block;
+    opacity: 0.7;
+    cursor: pointer;
+    position: relative;
+}
+
+.wf-btns .wf-remove
+{
+    background-image: url("images/remove.png");
+    margin: -3px;
+}
+
+.wf-head .wf-remove
+{
+    margin: -5px;
+}
+
+.wf-btns .wf-activities
+{
+    background-image: url("images/activities.png");
+}
+
+.wf-btns .wf-btn:hover
+{
+    opacity: 1;
+}
+
+ul.wf-categories, ul.wf-categories > li > ul
+{
+    width: 160px;
+    background-color: #dfe5ef;
+    display: none;
+    position: absolute;
+    z-index: 100;
+    top: 16px;
+    left: 0px;
+    border: 1px solid #adc7d6;
+}
+
+ul.wf-categories > li
+{
+    position: relative;
+    padding-left: 10px;
+}
+
+ul.wf-categories li
+{
+    padding: 2px;
+}
+
+ul.wf-categories li:hover
+{
+    background-color: #bfdaf5;
+}
+
+ul.wf-categories > li:hover > ul
+{
+    display: block;
+}
+
+ul.wf-categories > li > ul
+{
+    left: 100%;
+    top: -1px;
+}
+
+.wf-categories .wf-icon
+{
+    background-repeat: no-repeat;
+    background-position: left center;
+    padding-left: 20px;
+}
+
+.wf-submenu
+{
+    background: url("images/submenu.png") no-repeat right center;
+}
+
+.wf-activity-body
+{
+    padding-left: 24px;
+}
+
+.wf-closed .wf-activity-body
+{
+    display: none;
+}
+
+.wf-closed .wf-activity-closing
+{
+    display: none;
+}
+
+.wf-propg-list ul, .wf-propg-list li
+{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.wf-propg-list .wf-expandable
+{
+    margin: 6px 2px;
+}
+
+.wf-set-value-select
+{
+    width: 250px;
+    display: inline-block;
+    vertical-align: middle;
+}
