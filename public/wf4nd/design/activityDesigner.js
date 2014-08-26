@@ -1,8 +1,8 @@
 define(
-    ['wf-global/util', 'knockout', 'wf-viewModels/expandable', 'wf-viewModels/variableList', 'wf-viewModels/valueList', 'wf-viewModels/propertyCategoryList'],
+    ['wf-common/util', 'knockout', 'wf-design/expandable', 'wf-design/variableList', 'wf-design/valueList', 'wf-design/propertyCategoryList'],
     function (util, ko, Expandable, VariableList, ValueList, PropertyCategoryList) {
 
-        function ActivityPresenter(definition, removeCallback) {
+        function ActivityDesigner(definition, removeCallback) {
             Expandable.call(this, true);
 
             this.displayName = ko.observable("");
@@ -16,19 +16,19 @@ define(
             this.properties = ko.observable(definition.properties ? new PropertyCategoryList(definition.properties) : null);
         }
 
-        util.inherits(ActivityPresenter, Expandable);
+        util.inherits(ActivityDesigner, Expandable);
 
-        ActivityPresenter.prototype.canRemove = function () {
+        ActivityDesigner.prototype.canRemove = function () {
             return this._removeCallback ? true : false;
         };
 
-        ActivityPresenter.prototype.remove = function () {
+        ActivityDesigner.prototype.remove = function () {
             if (this._removeCallback) this._removeCallback(this);
         };
 
-        ActivityPresenter.prototype.isRoot = function () {
+        ActivityDesigner.prototype.isRoot = function () {
             return !this.canRemove();
         };
 
-        return ActivityPresenter;
+        return ActivityDesigner;
     });

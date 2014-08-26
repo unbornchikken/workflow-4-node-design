@@ -1,4 +1,4 @@
-define(['knockout', 'wf-viewModels/activityPresenter'], function (ko, ActivityPresenter) {
+define(['knockout', 'wf-design/activityDesigner'], function (ko, ActivityDesigner) {
 
     function WorkflowDesigner() {
 
@@ -103,7 +103,7 @@ define(['knockout', 'wf-viewModels/activityPresenter'], function (ko, ActivityPr
             }
         ]);
 
-        this.rootActivity = ko.observable(new ActivityPresenter(this.categories()[0].items[0]));
+        this.rootActivity = ko.observable(new ActivityDesigner(this.categories()[0].items[0]));
     }
 
     return WorkflowDesigner;

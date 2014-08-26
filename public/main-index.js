@@ -7,12 +7,12 @@ requirejs.config({
         'kendo': 'lib/kendo.ui.core-2014.2.716.min',
         'knockout.kendo': 'lib/knockout-kendo-0.8.1.min',
         'bluebird': 'lib/bluebird-2.3.0',
-        'loadsh': 'lib/lodash-2.4.1',
+        'lodash': 'lib/lodash-2.4.1',
 
         // Workflow 4 Node stuff:
-        'wf-viewModels': 'wf4nd/viewModels',
+        'wf-design': 'wf4nd/design',
         'wf-views': 'wf4nd/views',
-        'wf-global': 'wf4nd/global'
+        'wf-common': 'wf4nd/common'
     },
     shim: {
         'knockout.validation': {
@@ -24,6 +24,7 @@ requirejs.config({
     }
 });
 
-define(['wf-viewModels/workflowDesigner', 'jquery', 'text', 'knockout', 'knockout.validation', 'kendo', 'knockout.kendo', 'bluebird', 'loadsh'], function(WorkflowDesigner) {
-    window.workflowDesigner = new WorkflowDesigner();
+define(['wf-design/workflowDesigner', 'knockout', 'jquery', 'text', 'knockout.validation', 'kendo', 'knockout.kendo', 'bluebird', 'lodash'], function (WorkflowDesigner, ko) {
+    var designer = new WorkflowDesigner();
+    ko.applyBindings(designer, $("#designer").get()[0]);
 });
