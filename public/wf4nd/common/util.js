@@ -1,4 +1,4 @@
-define(function () {
+define(['jquery'], function ($) {
 
     var util = {
         inherits: function (ctor, superCtor) {
@@ -11,6 +11,17 @@ define(function () {
                     configurable: true
                 }
             });
+        },
+        installTemplate: function (id, html) {
+            if (!$('#' + id).length) {
+                $('<script />')
+                    .attr({
+                        id: id,
+                        type: 'text/html'
+                    })
+                    .html(html)
+                    .appendTo($('body'));
+            }
         }
     }
 

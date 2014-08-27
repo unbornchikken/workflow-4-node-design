@@ -15,10 +15,16 @@ requirejs.config({
         'wf-common': 'wf4nd/common'
     },
     shim: {
-        'knockout.validation': {
-            deps: ['knockout']
+        'jquery': {
+            exports: '$'
+        },
+        'kendo': {
+            deps: ['jquery']
         },
         'knockout.kendo': {
+            deps: ['kendo', 'knockout']
+        },
+        'knockout.validation': {
             deps: ['knockout']
         }
     }
@@ -26,5 +32,5 @@ requirejs.config({
 
 define(['wf-design/workflowDesigner', 'knockout', 'jquery', 'text', 'knockout.validation', 'kendo', 'knockout.kendo', 'bluebird', 'lodash'], function (WorkflowDesigner, ko) {
     var designer = new WorkflowDesigner();
-    ko.applyBindings(designer, $("#designer").get()[0]);
+    ko.applyBindings(designer, $('#designer').get()[0]);
 });

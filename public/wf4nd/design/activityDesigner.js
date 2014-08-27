@@ -1,6 +1,16 @@
 define(
-    ['wf-common/util', 'knockout', 'wf-design/expandable', 'wf-design/variableList', 'wf-design/valueList', 'wf-design/propertyCategoryList'],
-    function (util, ko, Expandable, VariableList, ValueList, PropertyCategoryList) {
+    [
+        'wf-common/util',
+        'knockout',
+        'wf-design/expandable',
+        'wf-design/variableList',
+        'wf-design/valueList',
+        'wf-design/propertyCategoryList',
+        'text!wf-views/activityDesigner.html'
+    ],
+    function (util, ko, Expandable, VariableList, ValueList, PropertyCategoryList, html) {
+
+        util.installTemplate('wf-activity-designer-tmpl', html);
 
         function ActivityDesigner(definition, removeCallback) {
             Expandable.call(this, true);

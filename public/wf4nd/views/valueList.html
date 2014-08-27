@@ -1,0 +1,20 @@
+<div class="wf-expandable" data-bind="css: { 'wf-closed': !isExpanded() }">
+    <div class="wf-exp-control">
+        <div class="wf-exp-btn" data-bind="click: toggleExpand"></div>
+        <div class="wf-exp-line" data-bind="visible: isExpanded()"></div>
+        <div class="wf-exp-lineend" data-bind="visible: isExpanded()"></div>
+    </div>
+    <div class="wf-exp-cnt">
+        <div class="wf-value-list">
+            <h2>// <span data-bind="text: title"></span></h2>
+
+            <div class="wf-value-list-body">
+                <ul data-bind="foreach: items">
+                    <li data-bind="template: { name: 'wf-value-tmpl' }"></li>
+                </ul>
+                <div class="wf-create-value"
+                     data-bind="click: createNew, text: createNewText, visible: createNew"></div>
+            </div>
+        </div>
+    </div>
+</div>

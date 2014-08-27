@@ -4,10 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
     <link rel="stylesheet" type="text/css" href="wf4nd/style/wf4nd.css"/>
+    <link rel="stylesheet" type="text/css" href="lib/kendo-2014.2.716/kendo.common.core.min.css"/>
+    <link rel="stylesheet" type="text/css" href="lib/kendo-2014.2.716/kendo.bootstrap.min.css"/>
     <title>Workflow 4 Node Designer - POC</title>
 </head>
 <body>
-    <div id="designer"></div>
+    <div id="designer" data-bind="template: { name: 'wf-workflow-designer-tmpl' }"></div>
     <script type="text/javascript" src="lib/require-2.1.14.js" data-main="main-index.js"></script>
 </body>
 </html>
