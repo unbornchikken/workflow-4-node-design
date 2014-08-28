@@ -1,6 +1,6 @@
 define(
-    ['wf-common/util', 'wf-design/activityDesigner', 'knockout', 'text!wf-views/value.html'],
-    function (util, ActivityDesigner, ko, html) {
+    ['wf-common/util', 'knockout', 'text!wf-views/value.html'],
+    function (util, ko, html) {
 
         util.installTemplate('wf-value-tmpl', html);
 
@@ -41,10 +41,12 @@ define(
 
         Value.prototype.setActivity = function (definition) {
             var self = this;
-            this.activity(new ActivityDesigner(definition, function () {
-                // Removed:
-                self.activity(null);
-            }));
+            require(['wf-design/activityDesigner'], function(ActivityDesigner) {
+                self.activity(new ActivityDesigner(definition, function () {
+                    // Removed:
+                    self.activity(null);
+                }));
+            });
         }
 
         return Value;
